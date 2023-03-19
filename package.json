@@ -14,6 +14,10 @@
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
 		"format": "prettier --plugin-search-dir . --write ."
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/realgoatish/somerset.git"
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
