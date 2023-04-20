@@ -18,6 +18,7 @@
 		action?: Action;
 		areaServed?: GeoCircle[];
 		makesOffer?: Offer[];
+		menu?: string;
 	}
 </script>
 
@@ -62,6 +63,7 @@
 	export let action: LocalBusinessJsonLdProps['action'] = undefined;
 	export let areaServed: LocalBusinessJsonLdProps['areaServed'] = undefined;
 	export let makesOffer: LocalBusinessJsonLdProps['makesOffer'] = undefined;
+	export let menu: LocalBusinessJsonLdProps['menu'] = undefined;
 
 	function LocalBusinessJsonLd({
 		type = 'LocalBusiness',
@@ -121,6 +123,7 @@
 		openingHours,
 		action,
 		areaServed,
-		makesOffer
+		makesOffer,
+		menu
 	})}
 </svelte:head>
