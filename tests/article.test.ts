@@ -13,5 +13,4 @@ test('ArticleJsonLd renders correctly', async ({ page }) => {
   const trimmedJsonLd = jsonLd.trim()
 
   await expect(trimmedJsonLd).toBe(JSON.stringify(articleData))
-  // await expect(JSON.parse(inside)).toMatchObject(data)
 })
