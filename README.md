@@ -71,7 +71,7 @@ Literally just [Next SEO](https://github.com/garmeeh/next-seo) for SvelteKit.
 
 ## Usage
 
-`Somerset` works by including it on pages where you would like SEO attributes to be added. Once included on the page you pass it a configuration object with the page's SEO properties. This can be dynamically generated at a page level or in some cases your API may return an SEO object.
+`Somerset` works by including it on pages where you would like SEO attributes to be added and passing it props to render OpenGraph/Meta tags. It also offers components for rendering JSON-LD.
 
 ### Setup
 
