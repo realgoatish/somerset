@@ -176,32 +176,32 @@ You can still centrally manage your global SEO data by passing it "downward" fro
 
   import { Somerset } from 'somerset'
 
-	export let data;
+  export let data;
 
-	const { pageSeo, globalSeo } = data;
+  const { pageSeo, globalSeo } = data;
 
 </script>
 
 <Somerset
-	title={pageSeo.title}
-	description={pageSeo.description}
-	canonical={`${globalSeo.url}${data.slug}`}
-	openGraph={{
-		type: 'website',
-		url: `${globalSeo.url}${data.slug}`,
-		title: pageSeo.openGraph.title,
-		description: pageSeo.openGraph.description,
-		locale: 'en_US',
-		siteName: globalSeo.name,
-		images: [
-			{
-				url: pageSeo.openGraph.image.url,
-				width: 1200,
-				height: 630,
-				alt: pageSeo.openGraph.image.alt
-			}
-		]
-	}}
+  title={pageSeo.title}
+  description={pageSeo.description}
+  canonical={`${globalSeo.url}${data.slug}`}
+  openGraph={{
+    type: 'website',
+    url: `${globalSeo.url}${data.slug}`,
+    title: pageSeo.openGraph.title,
+    description: pageSeo.openGraph.description,
+    locale: 'en_US',
+    siteName: globalSeo.name,
+    images: [
+      {
+        url: pageSeo.openGraph.image.url,
+        width: 1200,
+        height: 630,
+	alt: pageSeo.openGraph.image.alt
+      }
+    ]
+  }}
 />
 ```
 
