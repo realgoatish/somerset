@@ -461,27 +461,5 @@ export interface SomersetProps {
   children?: never;
 }
 
-export interface DefaultSeoProps {
-  dangerouslySetAllPagesToNoIndex?: boolean;
-  dangerouslySetAllPagesToNoFollow?: boolean;
-  defaultOpenGraphImageWidth?: number;
-  defaultOpenGraphImageHeight?: number;
-  defaultOpenGraphVideoWidth?: number;
-  defaultOpenGraphVideoHeight?: number;
-  title?: string;
-  titleTemplate?: string;
-  themeColor?: string;
-  defaultTitle?: string;
-  robotsProps?: AdditionalRobotsProps;
-  description?: string;
-  canonical?: string;
-  mobileAlternate?: MobileAlternate;
-  languageAlternates?: ReadonlyArray<LanguageAlternate>;
-  openGraph?: OpenGraph;
-  facebook?: { appId: string };
-  twitter?: Twitter;
-  additionalMetaTags?: ReadonlyArray<MetaTag>;
-  additionalLinkTags?: ReadonlyArray<LinkTag>;
-  children?: never;
-}
-export interface BuildTagsParams extends DefaultSeoProps, SomersetProps {}
+/* eslint-disable @typescript-eslint/no-empty-interface */
+export interface BuildTagsParams extends SomersetProps {}

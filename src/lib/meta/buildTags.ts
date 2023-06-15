@@ -5,20 +5,12 @@ import type { BuildTagsParams, OpenGraphMedia } from '../types.js';
 const defaults = {
   templateTitle: '',
   noindex: false,
-  nofollow: false,
-  defaultOpenGraphImageWidth: 0,
-  defaultOpenGraphImageHeight: 0,
-  defaultOpenGraphVideoWidth: 0,
-  defaultOpenGraphVideoHeight: 0,
+  nofollow: false
 };
 
 const buildOpenGraphMediaTags = (
   mediaType: 'image' | 'video' | 'audio',
-  media: ReadonlyArray<OpenGraphMedia> = [],
-  {
-    defaultWidth,
-    defaultHeight,
-  }: { defaultWidth?: number; defaultHeight?: number } = {},
+  media: ReadonlyArray<OpenGraphMedia> = []
 ) => {
   return media.reduce((tags, medium, index) => {
     tags.push(
@@ -67,14 +59,6 @@ const buildOpenGraphMediaTags = (
           content=${medium.width.toString()}
         />`,
       );
-    } else if (defaultWidth) {
-      tags.push(
-        `<meta
-          key="og:${mediaType}:width0${index}"
-          property="og:${mediaType}:width"
-          content=${defaultWidth.toString()}
-        />`,
-      );
     }
 
     if (medium.height) {
@@ -83,14 +67,6 @@ const buildOpenGraphMediaTags = (
           key="og:${mediaType}:height0${index}"
           property="og:${mediaType}:height"
           content=${medium.height.toString()}
-        />`,
-      );
-    } else if (defaultHeight) {
-      tags.push(
-        `<meta
-          key="og:${mediaType}:height0${index}"
-          property="og:${mediaType}:height"
-          content=${defaultHeight.toString()}
         />`,
       );
     }
@@ -122,12 +98,10 @@ const buildTags = (config: BuildTagsParams) => {
 
   const noindex =
     config.noindex ||
-    defaults.noindex ||
-    config.dangerouslySetAllPagesToNoIndex;
+    defaults.noindex
   const nofollow =
     config.nofollow ||
-    defaults.nofollow ||
-    config.dangerouslySetAllPagesToNoFollow;
+    defaults.nofollow
 
   let robotsParams = '';
   if (config.robotsProps) {
@@ -154,12 +128,6 @@ const buildTags = (config: BuildTagsParams) => {
   }
 
   if (noindex || nofollow) {
-    if (config.dangerouslySetAllPagesToNoIndex) {
-      defaults.noindex = true;
-    }
-    if (config.dangerouslySetAllPagesToNoFollow) {
-      defaults.nofollow = true;
-    }
 
     tagsToRender.push(
       `<meta
@@ -568,38 +536,16 @@ const buildTags = (config: BuildTagsParams) => {
     }
 
     // images
-    if (config.defaultOpenGraphImageWidth) {
-      defaults.defaultOpenGraphImageWidth = config.defaultOpenGraphImageWidth;
-    }
-
-    if (config.defaultOpenGraphImageHeight) {
-      defaults.defaultOpenGraphImageHeight = config.defaultOpenGraphImageHeight;
-    }
-
     if (config.openGraph.images && config.openGraph.images.length) {
       tagsToRender.push(
-        ...buildOpenGraphMediaTags('image', config.openGraph.images, {
-          defaultWidth: defaults.defaultOpenGraphImageWidth,
-          defaultHeight: defaults.defaultOpenGraphImageHeight,
-        }),
+        ...buildOpenGraphMediaTags('image', config.openGraph.images)
       );
     }
 
     // videos
-    if (config.defaultOpenGraphVideoWidth) {
-      defaults.defaultOpenGraphVideoWidth = config.defaultOpenGraphVideoWidth;
-    }
-
-    if (config.defaultOpenGraphVideoHeight) {
-      defaults.defaultOpenGraphVideoHeight = config.defaultOpenGraphVideoHeight;
-    }
-
     if (config.openGraph.videos && config.openGraph.videos.length) {
       tagsToRender.push(
-        ...buildOpenGraphMediaTags('video', config.openGraph.videos, {
-          defaultWidth: defaults.defaultOpenGraphVideoWidth,
-          defaultHeight: defaults.defaultOpenGraphVideoHeight,
-        }),
+        ...buildOpenGraphMediaTags('video', config.openGraph.videos),
       );
     }
 
