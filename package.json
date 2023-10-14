@@ -1,7 +1,12 @@
 {
 	"name": "somerset",
 	"author": "realgoatish",
-	"version": "0.0.3",
+	"version": "0.0.4",
+	"keywords": [
+		"svelte",
+		"seo",
+		"sveltekit"
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
